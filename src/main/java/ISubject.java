@@ -11,4 +11,5 @@ public interface ISubject {
 
     float getTemperature();
     public float getHumidity();
+    public float getPressure();
 }

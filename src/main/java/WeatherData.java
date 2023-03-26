@@ -68,7 +68,7 @@ public class WeatherData implements ISubject {
     public float getHumidity() {
         return humidity;
     }
-
+    @Override
     public float getPressure() {
         return pressure;
     }
