@@ -9,4 +9,6 @@ public interface ISubject {
     void notifyObserver();
 
 
+    float getTemperature();
+    public float getHumidity();
 }

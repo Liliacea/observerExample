@@ -1,6 +1,6 @@
 import javax.security.auth.Subject;
 
-public class CurrentConditionDisplay extends WeatherData implements IObserver, IDisplayElement {
+public class CurrentConditionDisplay implements IObserver, IDisplayElement {
     private float temperature;
     private float humidity;
     private ISubject weatherData;
@@ -13,9 +13,9 @@ public class CurrentConditionDisplay extends WeatherData implements IObserver, I
     }
 
     @Override
-    public void updateObserver(float temperature, float humidity, float pressure) {
-        this.temperature = temperature;
-        this.humidity = humidity;
+    public void updateObserver(float temperature, float humidity, float pressure, float Max, float Min, float Avg) {
+        this.temperature = weatherData.getTemperature();
+        this.humidity = weatherData.getHumidity();
         display();
     }
 

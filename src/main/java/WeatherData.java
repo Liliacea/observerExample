@@ -1,14 +1,23 @@
 import java.util.ArrayList;
-import java.util.Observer;
 
 public class WeatherData implements ISubject {
     private float temperature;
     private float humidity;
     private float pressure;
-    private ArrayList <IObserver> observers;
+    private float Max;
+    private float Min;
+    private float Avg;
+    ArrayList <IObserver> observers;
+    ArrayList<Float> temp = new ArrayList<>();
+
+
 
     public WeatherData() {
         observers = new ArrayList<>();
+
+
+
+
     }
 
     @Override
@@ -24,7 +33,7 @@ public class WeatherData implements ISubject {
     @Override
     public void notifyObserver() {
         for (IObserver observer : observers) {
-        observer.updateObserver(temperature,humidity,pressure);
+        observer.updateObserver(temperature,humidity,pressure,Max,Min,Avg);
         }
     }
     public void measurementsChanges(){
@@ -34,13 +43,28 @@ public class WeatherData implements ISubject {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
+
+        temp.add(temperature);
+        float max = temp.get(0);
+        float min = temp.get(0);
+        float summ = 0;
+
+        for (int i = 0; i < temp.size(); i++) {
+            Max = Math.max(max,temp.get(i));
+            Min = Math.min(min,temp.get(i));
+            summ = summ + temp.get(i);
+        }
+        this.Max = Max;
+        this.Min = Min;
+        this.Avg = summ/temp.size();
+
         measurementsChanges();
     }
-
+    @Override
     public float getTemperature() {
         return temperature;
     }
-
+    @Override
     public float getHumidity() {
         return humidity;
     }

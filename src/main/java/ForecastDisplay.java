@@ -5,7 +5,7 @@ public class ForecastDisplay implements IDisplayElement, IObserver {
     }
 
     @Override
-    public void updateObserver(float temperature, float humidity, float pressure) {
+    public void updateObserver(float temperature, float humidity, float pressure, float Max, float Min, float Avg) {
 
     }
 }
